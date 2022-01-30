@@ -1,0 +1,8 @@
+Monday:
+Tuesday:
+	make power bi data visualizations 5 2 Tuesday Tuesday
+	make test cases for application 4 4 Tuesday Wednesday
+	mentor interns for project 3 2 Tuesday Thursday
+Wednesday:
+Thursday:
+Friday:

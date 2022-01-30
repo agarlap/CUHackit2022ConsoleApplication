@@ -1,2 +1,0 @@
-eat 5 1 mno mon
-bathe 1 2 tues tues

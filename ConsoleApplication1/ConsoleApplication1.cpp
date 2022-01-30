@@ -62,7 +62,7 @@ int main() {
     calendar_schedular_mapping.insert(pair<string, vector<struct TASKS>>(businessdays[3], vector<struct TASKS>()));
     calendar_schedular_mapping.insert(pair<string, vector<struct TASKS>>(businessdays[4], vector<struct TASKS>()));
 
-    while (choice != 9) {
+    while (choice != 10) {
         choice = printMenu(choice);
         if (choice == 1) {
 
@@ -161,7 +161,7 @@ int main() {
         else if (choice == 3) {
             
             // Create and open a text file
-            ofstream MyFile("mytasksreceipt.txt");
+            ofstream MyFile("mylistoftasks.txt");
 
             // adding things into our text file
             if (currenttasknum != 0)
@@ -226,6 +226,53 @@ int main() {
         }
         else if (choice == 7)
         {
+            // print calendar contents to a separate text file
+
+            // Create and open a text file
+            ofstream MyFile2("mycalendaroftasks.txt");
+
+            // adding things into our text file
+            
+            for (int k = 0; k < 5; k++)
+            {
+                MyFile2 << businessdays[k] << ":\n";
+
+                for (int l = 0; l < calendar_schedular_mapping[businessdays[k]].size(); l++)
+                {
+                    MyFile2 << "\t";
+                    MyFile2 << calendar_schedular_mapping[businessdays[k]].at(l).name << ' ';
+                    MyFile2 << calendar_schedular_mapping[businessdays[k]].at(l).priorty << ' ';
+                    MyFile2 << calendar_schedular_mapping[businessdays[k]].at(l).duration << ' ';
+                    MyFile2 << calendar_schedular_mapping[businessdays[k]].at(l).currentDay << ' ';
+                    MyFile2 << calendar_schedular_mapping[businessdays[k]].at(l).dueDay << endl;
+                }
+            }
+
+//            if (currenttasknum != 0)
+//            {
+//                MyFile << "|          TASK          | PRIORITY | TIME (HOURS) | START DAY | DUE DAY |" << endl;
+//                MyFile << "-----------------------------------------------------" << endl;
+//            }
+
+//            while (printingentry != currenttasknum)
+//            {
+//                // Write to the file
+//                MyFile << "|" << TaskArray[printingentry].name << " |     " << TaskArray[printingentry].priorty << "     |     " << TaskArray[printingentry].duration << "     | " << TaskArray[printingentry].currentDay << " | " << TaskArray[printingentry].dueDay << " |" << endl;
+//                printingentry = printingentry + 1;
+//            }
+
+//            if (currenttasknum != 0)
+//            {
+//                MyFile << "-----------------------------------------------------" << endl;
+//            }
+
+            // Close the file
+            MyFile2.close();
+
+//            printingentry = 0;
+        }
+        else if (choice == 8)
+        {
             // clear out tasks
             for (int m = 0; m < currenttasknum; m++)
             {
@@ -238,7 +285,7 @@ int main() {
 
             currenttasknum = 0;
         }
-        else if (choice == 8)
+        else if (choice == 9)
         {
             // clear out calendar
             for (int n = 0; n < 5; n++)

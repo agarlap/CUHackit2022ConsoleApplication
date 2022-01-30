@@ -101,14 +101,15 @@ int printMenu(int userPick) {
     cout << "===================================" << endl;
     cout << "MENU" << endl;
     cout << "1. Create Task" << endl;
-    cout << "2. See Current List of Tasks" << endl;
-    cout << "3. Print Planned Tasks in Separate Text File" << endl;
+    cout << "2. Display Current List of Tasks" << endl;
+    cout << "3. Send Planned Tasks in Separate Text File" << endl;
     cout << "4. Sort Tasks Based on Priority" << endl;
     cout << "5. Throw Tasks in Calendar" << endl;
-    cout << "6. Print Calendar of Tasks" << endl;
-    cout << "7. Clear List of Tasks" << endl;
-    cout << "8. Clear Calendar Stored with Tasks" << endl;
-    cout << "9. End Program" << endl;
+    cout << "6. Display Currrent Calendar of Tasks" << endl;
+    cout << "7. Send Calendar of Tasks in Separate Text File" << endl;
+    cout << "8. Clear List of Tasks" << endl;
+    cout << "9. Clear Calendar Stored with Tasks" << endl;
+    cout << "10. End Program" << endl;
     cout << "===================================" << endl;
 
     cin >> userPick;
