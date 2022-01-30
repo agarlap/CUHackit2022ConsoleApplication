@@ -105,11 +105,12 @@ int printMenu(int userPick) {
     cout << "3. Send Planned Tasks in Separate Text File" << endl;
     cout << "4. Sort Tasks Based on Priority" << endl;
     cout << "5. Throw Tasks in Calendar" << endl;
-    cout << "6. Display Currrent Calendar of Tasks" << endl;
-    cout << "7. Send Calendar of Tasks in Separate Text File" << endl;
-    cout << "8. Clear List of Tasks" << endl;
-    cout << "9. Clear Calendar Stored with Tasks" << endl;
-    cout << "10. End Program" << endl;
+    cout << "6. Display Current List of Tasks that are in the Overflow Area" << endl;
+    cout << "7. Display Currrent Calendar of Tasks" << endl;
+    cout << "8. Send Calendar of Tasks in Separate Text File" << endl;
+    cout << "9. Clear List of Tasks" << endl;
+    cout << "10. Clear Calendar Stored with Tasks" << endl;
+    cout << "11. End Program" << endl;
     cout << "===================================" << endl;
 
     cin >> userPick;

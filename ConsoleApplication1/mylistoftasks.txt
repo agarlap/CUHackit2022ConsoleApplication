@@ -1,8 +1,10 @@
 |          TASK          | PRIORITY | TIME (HOURS) | START DAY | DUE DAY |
 -----------------------------------------------------
-|work on presentation |     5     |     2     | Monday | Monday |
-|get coffee |     5     |     1     | Monday | Monday |
-|set up workshops |     5     |     3     | Tuesday | Tuesday |
-|mentor interns for training |     4     |     3     | Monday | Tuesday |
+|get coffee |     5     |     1     | Tuesday | Tuesday |
+|run junit tests |     5     |     4     | Monday | Monday |
+|call my best friend |     5     |     1     | Monday | Monday |
+|host workshops |     5     |     2     | Monday | Monday |
+|call helpline desk |     5     |     3     | Monday | Monday |
 |make power bi visualizations |     4     |     5     | Monday | Tuesday |
+|mentor interns |     4     |     3     | Monday | Tuesday |
 -----------------------------------------------------

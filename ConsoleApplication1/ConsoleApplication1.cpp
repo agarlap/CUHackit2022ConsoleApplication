@@ -63,7 +63,11 @@ int main() {
     calendar_schedular_mapping.insert(pair<string, vector<struct TASKS>>(businessdays[3], vector<struct TASKS>()));
     calendar_schedular_mapping.insert(pair<string, vector<struct TASKS>>(businessdays[4], vector<struct TASKS>()));
 
-    while (choice != 10) {
+    // variables for holding "overflow" tasks where in case the task due day is not met, instead of pushing the task to the next day, the task will be in an "overflow task" storage area
+    int overflowcurrenttasknum = 0;
+    struct TASKS OverflowTaskArray[25];
+
+    while (choice != 11) {
         choice = printMenu(choice);
         if (choice == 1) {
 
@@ -231,6 +235,32 @@ int main() {
 
                 }
 
+                int tempdayduelimit = 0;
+                if (TaskArray[j].dueDay == "Monday")
+                {
+                    tempdayduelimit = 0;
+                }
+                else if (TaskArray[j].dueDay == "Tuesday")
+                {
+                    tempdayduelimit = 1;
+                }
+                else if (TaskArray[j].dueDay == "Wednesday")
+                {
+                    tempdayduelimit = 2;
+                }
+                else if (TaskArray[j].dueDay == "Thursday")
+                {
+                    tempdayduelimit = 3;
+                }
+                else if (TaskArray[j].dueDay == "Friday")
+                {
+                    tempdayduelimit = 4;
+                }
+                else
+                {
+
+                }
+
                 /*
                 if (TaskArray[j].duration <= businessdayshourlimit[tempdayindex])
                 {
@@ -250,13 +280,46 @@ int main() {
                     tempdayindex = tempdayindex + 1;
                 }
 
-                calendar_schedular_mapping[businessdays[tempdayindex]].push_back(TaskArray[j]);
-                businessdayshourlimit[tempdayindex] = businessdayshourlimit[tempdayindex] - TaskArray[j].duration;
+                // conditional to store task in the overflow task list or calendar map
+
+                if (tempdayindex > tempdayduelimit)
+                {
+                    // place task in overflow task holding pen and don't add the task into the map
+                    OverflowTaskArray[overflowcurrenttasknum].name = TaskArray[j].name;
+                    OverflowTaskArray[overflowcurrenttasknum].priorty = TaskArray[j].priorty;
+                    OverflowTaskArray[overflowcurrenttasknum].duration = TaskArray[j].duration;
+                    OverflowTaskArray[overflowcurrenttasknum].currentDay = TaskArray[j].currentDay;
+                    OverflowTaskArray[overflowcurrenttasknum].dueDay = TaskArray[j].dueDay;
+
+                    overflowcurrenttasknum = overflowcurrenttasknum + 1;
+                }
+                else
+                {
+                    // add the task into the map
+                    calendar_schedular_mapping[businessdays[tempdayindex]].push_back(TaskArray[j]);
+                    businessdayshourlimit[tempdayindex] = businessdayshourlimit[tempdayindex] - TaskArray[j].duration;
+                }
             }
 
             cout << businessdayshourlimit[0] << " " << businessdayshourlimit[1] << " " << businessdayshourlimit[2] << " " << businessdayshourlimit[3] << " " << businessdayshourlimit[4] << endl;
         }
         else if (choice == 6)
+        {
+            if (currenttasknum != 0)
+            {
+                cout << "|     OVERFLOW TASK      | PRIORITY | TIME (HOURS) | START DAY | DUE DAY |" << endl;
+                cout << "-----------------------------------------------------" << endl;
+                for (int p = 0; p < overflowcurrenttasknum; p++) {
+                    cout << OverflowTaskArray[p].name << " " << OverflowTaskArray[p].priorty << " " << OverflowTaskArray[p].duration << " " << OverflowTaskArray[p].currentDay << " " << OverflowTaskArray[p].dueDay << endl;
+                }
+                cout << "-----------------------------------------------------" << endl;
+            }
+            else
+            {
+                cout << "NO TASKS IN THE OVERFLOW STORAGE AREA!" << endl;
+            }
+        }
+        else if (choice == 7)
         {
             // print calendar of tasks
             for (int k = 0; k < 5; k++)
@@ -274,7 +337,7 @@ int main() {
                 }
             }
         }
-        else if (choice == 7)
+        else if (choice == 8)
         {
             // print calendar contents to a separate text file
 
@@ -301,7 +364,7 @@ int main() {
             MyFile2.close();
 
         }
-        else if (choice == 8)
+        else if (choice == 9)
         {
             // clear out tasks
             for (int m = 0; m < currenttasknum; m++)
@@ -315,7 +378,7 @@ int main() {
 
             currenttasknum = 0;
         }
-        else if (choice == 9)
+        else if (choice == 10)
         {
             // clear out calendar
             for (int n = 0; n < 5; n++)

@@ -1,10 +1,11 @@
 Monday:
-	work on presentation 5 2 Monday Monday
-	get coffee 5 1 Monday Monday
-	mentor interns for training 4 3 Monday Tuesday
+	run junit tests 5 4 Monday Monday
+	call my best friend 5 1 Monday Monday
+	host workshops 5 2 Monday Monday
 Tuesday:
-	set up workshops 5 3 Tuesday Tuesday
+	get coffee 5 1 Tuesday Tuesday
 	make power bi visualizations 4 5 Monday Tuesday
+	mentor interns 4 3 Monday Tuesday
 Wednesday:
 Thursday:
 Friday:
