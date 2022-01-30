@@ -1,0 +1,6 @@
+|          TASK          | PRIORITY | TIME (HOURS) | START DAY | DUE DAY |
+-----------------------------------------------------
+|eating salad |     5     | 2 | Monday | Monday |
+|shave my mf beard |     2     | 2 | Tuesday | Friday |
+|eating cereal |     1     | 3 | Monday | Friday |
+-----------------------------------------------------
