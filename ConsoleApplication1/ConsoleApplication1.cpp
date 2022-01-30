@@ -24,24 +24,16 @@ int main() {
     //Set Week up
     struct CLOCK wakeup, sleep, activeHours;
 
-    cout << "What time do you start your day (Hours min seconds): " << endl;
-    cin >> wakeup.hours >> wakeup.minutes >> wakeup.seconds;
+    cout << "What time do you start your day (Type the time in 'Hours min seconds am/pm' form): " << endl;
+    cin >> wakeup.hours >> wakeup.minutes >> wakeup.seconds >> wakeup.AMPM1;
 
-    cout << "AM or PM?: ";
-    cin >> wakeup.AMPM1;
-
-
-    cout << "What time do you end your day (Hours min seconds): " << endl;
-    cin >> sleep.hours >> sleep.minutes >> sleep.seconds;
-
-    cout << "AM or PM?: ";
-    cin >> sleep.AMPM2;
+    cout << "What time do you end your day (Type the time in 'Hours min seconds am/pm' form): " << endl;
+    cin >> sleep.hours >> sleep.minutes >> sleep.seconds >> sleep.AMPM2;
 
     timeDifference(wakeup, sleep, &activeHours);
 
     //Display activeHours
-    cout << "Daily hours " << activeHours.hours << ":" << activeHours.minutes << ":" << activeHours.seconds;
-    cout << endl;
+    cout << "Daily hours " << activeHours.hours << " hours, " << activeHours.minutes << " minutes, " << activeHours.seconds << " seconds" << endl;
 
     double workSeconds = (activeHours.hours * 3600) + (activeHours.minutes * 60) + (activeHours.seconds);
     double workWeekHours = (workSeconds * 5) / 3600;
