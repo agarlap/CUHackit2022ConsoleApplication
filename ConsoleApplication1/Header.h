@@ -96,7 +96,9 @@ void timeDifference(struct CLOCK wakeup, struct CLOCK sleep, struct CLOCK* activ
     activeHours->hours = sleep.hours - wakeup.hours;
 }
 
+// menu function to display menu
 int printMenu(int userPick) {
+    cout << "===================================" << endl;
     cout << "MENU" << endl;
     cout << "1. Create Task" << endl;
     cout << "2. See Tasks" << endl;
@@ -107,6 +109,8 @@ int printMenu(int userPick) {
     cout << "7. Clear out List of Tasks" << endl;
     cout << "8. Clear out Stored Calendar" << endl;
     cout << "9. Quit" << endl;
+    cout << "===================================" << endl;
+
     cin >> userPick;
     return userPick;
 }
