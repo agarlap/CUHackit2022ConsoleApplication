@@ -1,8 +1,10 @@
 Monday:
+	work on presentation 5 2 Monday Monday
+	get coffee 5 1 Monday Monday
+	mentor interns for training 4 3 Monday Tuesday
 Tuesday:
-	make power bi data visualizations 5 2 Tuesday Tuesday
-	make test cases for application 4 4 Tuesday Wednesday
-	mentor interns for project 3 2 Tuesday Thursday
+	set up workshops 5 3 Tuesday Tuesday
+	make power bi visualizations 4 5 Monday Tuesday
 Wednesday:
 Thursday:
 Friday:

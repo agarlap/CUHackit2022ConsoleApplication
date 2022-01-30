@@ -50,6 +50,7 @@ int main() {
     string businessdays[5] = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
     int todayindex = 0;
     int duedayindex = 0;
+    int businessdayshourlimit[5] = { workWeekHours / 5, workWeekHours / 5, workWeekHours / 5, workWeekHours / 5,  workWeekHours / 5 };
 
     //our map data structure used to store the tasks in a map using the days of the week as keys
     map<string, vector<struct TASKS>> calendar_schedular_mapping;
@@ -203,8 +204,57 @@ int main() {
             for (int j = 0; j < currenttasknum; j++)
             {
                 // store highest priority tasks first and use the current day as the key
-                calendar_schedular_mapping[TaskArray[j].currentDay].push_back(TaskArray[j]);
+                // keep doing this until the day limit of the particular current day is reached
+                int tempdayindex = 0;
+                if (TaskArray[j].currentDay == "Monday")
+                {
+                    tempdayindex = 0;
+                }
+                else if (TaskArray[j].currentDay == "Tuesday")
+                {
+                    tempdayindex = 1;
+                }
+                else if (TaskArray[j].currentDay == "Wednesday")
+                {
+                    tempdayindex = 2;
+                }
+                else if (TaskArray[j].currentDay == "Thursday")
+                {
+                    tempdayindex = 3;
+                }
+                else if (TaskArray[j].currentDay == "Friday")
+                {
+                    tempdayindex = 4;
+                }
+                else
+                {
+
+                }
+
+                /*
+                if (TaskArray[j].duration <= businessdayshourlimit[tempdayindex])
+                {
+                    calendar_schedular_mapping[TaskArray[j].currentDay].push_back(TaskArray[j]);
+                    businessdayshourlimit[tempdayindex] = businessdayshourlimit[tempdayindex] - TaskArray[j].duration;
+                }
+                else
+                {
+                    //overflowing case in case a day is full of tasks to where the current task isn't placeable in the current day
+                    tempdayindex = tempdayindex + 1;
+                    calendar_schedular_mapping[businessdays[tempdayindex]].push_back(TaskArray[j]);
+                    businessdayshourlimit[tempdayindex] = businessdayshourlimit[tempdayindex] - TaskArray[j].duration;
+                }
+                */
+                while (TaskArray[j].duration > businessdayshourlimit[tempdayindex])
+                {
+                    tempdayindex = tempdayindex + 1;
+                }
+
+                calendar_schedular_mapping[businessdays[tempdayindex]].push_back(TaskArray[j]);
+                businessdayshourlimit[tempdayindex] = businessdayshourlimit[tempdayindex] - TaskArray[j].duration;
             }
+
+            cout << businessdayshourlimit[0] << " " << businessdayshourlimit[1] << " " << businessdayshourlimit[2] << " " << businessdayshourlimit[3] << " " << businessdayshourlimit[4] << endl;
         }
         else if (choice == 6)
         {
@@ -232,7 +282,6 @@ int main() {
             ofstream MyFile2("mycalendaroftasks.txt");
 
             // adding things into our text file
-            
             for (int k = 0; k < 5; k++)
             {
                 MyFile2 << businessdays[k] << ":\n";
@@ -248,28 +297,9 @@ int main() {
                 }
             }
 
-//            if (currenttasknum != 0)
-//            {
-//                MyFile << "|          TASK          | PRIORITY | TIME (HOURS) | START DAY | DUE DAY |" << endl;
-//                MyFile << "-----------------------------------------------------" << endl;
-//            }
-
-//            while (printingentry != currenttasknum)
-//            {
-//                // Write to the file
-//                MyFile << "|" << TaskArray[printingentry].name << " |     " << TaskArray[printingentry].priorty << "     |     " << TaskArray[printingentry].duration << "     | " << TaskArray[printingentry].currentDay << " | " << TaskArray[printingentry].dueDay << " |" << endl;
-//                printingentry = printingentry + 1;
-//            }
-
-//            if (currenttasknum != 0)
-//            {
-//                MyFile << "-----------------------------------------------------" << endl;
-//            }
-
             // Close the file
             MyFile2.close();
 
-//            printingentry = 0;
         }
         else if (choice == 8)
         {
@@ -295,6 +325,13 @@ int main() {
                     calendar_schedular_mapping[businessdays[n]].clear();
                 }
             }
+            // reset time available on calendar
+            businessdayshourlimit[0] = workWeekHours / 5;
+            businessdayshourlimit[1] = workWeekHours / 5;
+            businessdayshourlimit[2] = workWeekHours / 5;
+            businessdayshourlimit[3] = workWeekHours / 5;
+            businessdayshourlimit[4] = workWeekHours / 5;
+
         }
     } //Ends while loop
 
